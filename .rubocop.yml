@@ -1,0 +1,95 @@
+# The behavior of RuboCop can be controlled via the .rubocop.yml
+# configuration file. It makes it possible to enable/disable
+# certain cops (checks) and to alter their behavior if they accept
+# any parameters. The file can be placed either in your home
+# directory or in some project directory.
+#
+# RuboCop will start looking for the configuration file in the directory
+# where the inspected file is and continue its way up to the root directory.
+#
+# See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
+
+# Configuration parameters: EnforcedStyle, IndentationWidth.
+# SupportedStyles: with_first_argument, with_fixed_indentation
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
+    - bin/**
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
+  Exclude:
+    - spec/**/*
+  Max: 25
+
+Metrics/BlockLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  CountAsOne: ['array', 'heredoc', 'hash']
+  Exclude:
+    - bin/**
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - bin/**
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - bin/**
+
+Naming/MethodParameterName:
+  Exclude:
+    - spec/**/*
+
+Naming/VariableNumber:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/MixinUsage:
+  Enabled: true
+  Exclude:
+    - bin/**
+
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: brackets
+
+AllCops:
+  Exclude:
+    - node_modules/**/*
+    - db/migrate/**/*
+    - db/schema.rb
+    - vendor/**/*
+
+  NewCops: enable

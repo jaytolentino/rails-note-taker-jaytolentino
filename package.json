@@ -1,0 +1,36 @@
+{
+  "name": "note_taker",
+  "private": true,
+  "dependencies": {
+    "@babel/preset-react": "^7.14.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.4.1",
+    "webpack-dev-server": "3.11.2"
+  },
+  "scripts": {
+    "lint": "$(yarn bin)/eslint app/javascript -c .eslintrc.js --ext .jsx --ext .js",
+    "lint:fix": "$(yarn bin)/eslint app/javascript/ -c .eslintrc.js --ext .jsx --ext .js --fix"
+  }
+}
