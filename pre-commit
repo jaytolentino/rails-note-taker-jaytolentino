@@ -1,0 +1,22 @@
+#!/bin/sh
+FILES=$(git diff --cached --name-only --diff-filter=ACMR "*.js" "*.jsx" "*.scss" | sed 's| |\\ |g')
+if  [[ -z "$FILES" ]]; then
+  echo "no files to check for ESLint"
+else
+	# Prettify all selected files
+	echo "$FILES" | xargs yarn eslint --fix
+
+	# Add back the modified/prettified files to staging
+	echo "$FILES" | xargs git add
+fi
+
+# Auto-correct the Ruby files with RuboCop
+RB_FILES=$(git diff --cached --name-only --diff-filter=ACMR "*.rb" | sed 's| |\\ |g')
+if  [[ -z "$RB_FILES" ]]; then
+  echo "no files to check for RuboCop"
+else
+  echo "$RB_FILES" | xargs rubocop --force-exclusion --safe-auto-correct
+  echo "$RB_FILES" | xargs git add
+fi
+
+exit 0
