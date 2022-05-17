@@ -1,0 +1,31 @@
+name: Build & Test
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: setup system
+      run: |
+        sudo apt-get install libsqlite3-dev
+
+    - name: setup ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    
+    - name: prepare db
+      run: |
+        bin/rails db:prepare
+
+    - name: run tests
+      run: |
+        bundle exec rspec

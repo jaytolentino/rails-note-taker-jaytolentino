@@ -1,0 +1,19 @@
+reviewers:
+  defaults:
+    - reviewers
+
+  groups:
+    reviewers:
+      - mindplace
+      - tagCincy
+      - felixclack
+      - andrewastrachan
+      - csto
+
+options:
+  enable_group_assignment: false
+  ignore_draft: true
+  ignored_keywords:
+    - DO NOT REVIEW
+    - WIP
+  numberOfReviewers: 2
