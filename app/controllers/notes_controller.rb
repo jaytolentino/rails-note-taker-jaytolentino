@@ -2,6 +2,7 @@
 
 class NotesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_note, only: [:update]
 
   def index
     query = params[:query]
@@ -25,7 +26,19 @@ class NotesController < ApplicationController
     end
   end
 
+  def update
+    if @note.update(note_params)
+      render json: @note, status: :ok
+    else
+      render json: @note.errors, status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def set_note
+    @note = Note.find(params[:id])
+  end
 
   def note_params
     params.permit(:title, :scheduled_at)
