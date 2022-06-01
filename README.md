@@ -48,6 +48,10 @@ The title can be between 1 and 200 characters long. Updates can be sparse and on
   npm install -g yarn # if you don't already have it
   yarn install
 
+  # setup the db
+  bundle exec rake db:setup
+  bundle exec rake db:migrate
+
   # misc setup
   git config core.hooksPath .githooks # run linters on commit (optional)
 
