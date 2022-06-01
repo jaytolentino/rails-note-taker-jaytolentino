@@ -62,7 +62,7 @@ function App() {
   const [searchString, setSearchString] = useState("");
 
   useEffect(() => {
-    getNotes("http://localhost:3000/notes", searchString)
+    getNotes("http://127.0.0.1:3000/notes", searchString)
       .then((response) => response.json())
       .then((data) => {
         setNotes(data);
@@ -105,7 +105,7 @@ function App() {
     setNewNote("");
     setReminder("");
 
-    saveNote("http://localhost:3000/notes", newNoteValue)
+    saveNote("http://127.0.0.1:3000/notes", newNoteValue)
       .then((response) => response.json())
       .then((data) => {
         if (data.errors) {
@@ -119,7 +119,7 @@ function App() {
   const handleSaveSelectedNote = (selectedNote) => (e) => {
     e.preventDefault();
 
-    saveNote("http://localhost:3000/notes/", selectedNote)
+    saveNote("http://127.0.0.1:3000/notes/", selectedNote)
       .then((response) => response.json())
       .then((data) => {
         if (data.errors) {
@@ -130,7 +130,7 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    getNotes("http://localhost:3000/notes", searchString)
+    getNotes("http://127.0.0.1:3000/notes", searchString)
       .then((response) => response.json())
       .then((data) => {
         setNotes(data);
@@ -138,7 +138,7 @@ function App() {
   };
 
   const handleDelete = (id) => () => {
-    deleteNote(`http://localhost:3000/notes/${id}`).then(() => {
+    deleteNote(`http://127.0.0.1:3000/notes/${id}`).then(() => {
       const filteredNotes = notes.filter((note) => note.id !== id);
       setNotes(filteredNotes);
     });
