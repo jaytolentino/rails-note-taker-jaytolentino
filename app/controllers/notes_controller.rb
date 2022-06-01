@@ -2,7 +2,7 @@
 
 class NotesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_note, only: [:update]
+  before_action :set_note, only: [:update, :destroy]
 
   def index
     query = params[:query]
@@ -29,6 +29,14 @@ class NotesController < ApplicationController
   def update
     if @note.update(note_params)
       render json: @note, status: :ok
+    else
+      render json: @note.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @note.destroy
+      render json: @note, status: :no_content
     else
       render json: @note.errors, status: :unprocessable_entity
     end
