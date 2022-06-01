@@ -21,7 +21,7 @@ The UI Application is expecting a note structure to have the following fields:
 |---|---|---|
 |id|string|This is the ID of the note as generated on the server.|
 |title|string|This is the body of the note can can be a string of up to 200 characters in length.|
-|schedule|string|This is the schedule of the reminder and can be an ISO-8601 date string including time.|
+|scheduled_at|string|This is the schedule of the reminder and can be an ISO-8601 date string including time.|
 
 The reminder date and time will be used to send an email message to the user when that date and time passes. The body of the email will contain the title of the note.
 
